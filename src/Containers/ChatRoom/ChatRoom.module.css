@@ -1,0 +1,9 @@
+.ChatRoomContainer{
+   box-sizing: border-box;
+   width: 100%;
+   height: 100%;
+}
+
+.SideAndMessages{
+    display: flex;
+}

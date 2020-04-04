@@ -1,0 +1,7 @@
+.FormInfoDisplayContainer{
+    border: 2px solid yellow;
+    height: 70vh;
+    margin: auto;
+    box-sizing: border-box;
+width: 70vw;
+}
