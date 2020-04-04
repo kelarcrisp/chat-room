@@ -1,0 +1,17 @@
+.NavBarContainer{
+    height: 80px;
+    background-color: gray;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+.NavItemsLeft{
+    margin: 0 20px;
+    color: white;
+}
+
+.NavItemsRight{
+    margin: 0 20px;
+}

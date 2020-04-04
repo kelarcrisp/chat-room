@@ -3,7 +3,12 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import firebase from 'firebase'
 
+firebase.initializeApp({
+  apiKey: 'AIzaSyB9JlL6VkkQFN13MHaO3ynx6K9BnGEADYk',
+  authDomain: 'chatroom-9dfd4.firebaseapp.com'
+})
 ReactDOM.render(
   <React.StrictMode>
     <App />

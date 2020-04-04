@@ -1,12 +1,22 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
-import ExternalLogin from './Components/HomePage/ExternalSignIn';
+import ExternalSignIn from './Components/HomePage/ExternalSignIn';
+import {
+  BrowserRouter,
+  Switch,
+  Route,
+} from "react-router-dom";
+import ChatRoom from './Containers/ChatRoom/ChatRoom';
+import Profile from './Containers/Profile/Profile';
 function App() {
   return (
-    <div >
-      <ExternalLogin />
-    </div>
+    <BrowserRouter>
+      <Switch>
+        <Route path='/' exact component={ExternalSignIn} />
+        <Route path='/Chat-room' component={ChatRoom} />
+        <Route path='/Profile' component={Profile} />
+      </Switch>
+    </BrowserRouter>
   );
 }
 
