@@ -28,6 +28,16 @@
     padding: 8px 15px;   
 }
 
+.MyUser{
+text-align: center;
+      list-style-type: none;   
+    color: black;
+    margin-left: 45%;
+    background-attachment: fixed;
+    position: relative; 
+    border-radius: 20px;
+}
+
 .TheirText{
     margin-right: 45%;
     border-radius: 20px;

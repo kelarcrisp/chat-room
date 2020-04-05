@@ -20,7 +20,10 @@ const FormInfoDisplay = (props) => {
                 <div>
                     {props.messagesToDisplay.map((message, index) => {
                         return (
-                            <ul key={Math.random()}><li className={classes.MyText}>{message}</li></ul>
+                            <ul key={Math.random()}>
+                                <li className={classes.MyUser}>{message.username.myUser}</li>
+                                <li className={classes.MyText}>{message.message}</li>
+                            </ul>
                         )
                     })}
                     <div ref={messagesEndRef} />

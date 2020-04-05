@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import classes from './NavBar.module.css';
 import { NavLink } from 'react-router-dom';
 import firebase from 'firebase/app';
+
 class NavBar extends Component {
     state = {
         myUser: ''
