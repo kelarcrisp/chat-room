@@ -1,34 +1,34 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Button from '@material-ui/core/Button';
 import { TextField } from '@material-ui/core'
 import classes from './InputArea.module.css';
 import SendIcon from '@material-ui/icons/Send';
 
+const InputArea = (props) => {
 
-const InputArea = () => {
+    const [message, setMessage] = useState('');
 
-    const handleSubmit = () => {
 
-    }
-    const handleChange = () => {
-
+    const handleChange = (e) => {
+        e.preventDefault();
+        setMessage(e.target.value)
     }
     return (
         <div className={classes.ContactContainer}>
             <form
-                onSubmit={handleSubmit}
+                onSubmit={(e) => props.handleSubmit(e, message)}
                 className={classes.FormInfoContainer} autoComplete="on">
                 <TextField
-                    style={{width: '400px'}}
+                    style={{ width: '400px' }}
                     className={classes.TextField}
                     onChange={handleChange}
                     id="message" label="Message" variant="outlined" />
                 <Button
-                    onClick={handleSubmit}
+                    onClick={(e) => props.handleSubmit(e, message)}
                     variant="contained"
                     color="primary"
                     startIcon={<SendIcon></SendIcon>}
-                    style={{height: '55px'}}
+                    style={{ height: '55px' }}
                 >
                     Send!
                     </Button>

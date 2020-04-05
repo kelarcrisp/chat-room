@@ -3,5 +3,38 @@
     height: 70vh;
     margin: auto;
     box-sizing: border-box;
-width: 70vw;
+    width: 70vw;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
 }
+
+.TextConvo{
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+}
+
+.MyText{
+    list-style-type: none;   
+    color: white;
+    margin-left: 45%;
+    background: linear-gradient(to bottom, #00D0EA 0%, #0085D1 100%);
+    background-attachment: fixed;
+    position: relative; 
+    border-radius: 20px;
+    padding: 8px 15px;   
+}
+
+.TheirText{
+    margin-right: 45%;
+    border-radius: 20px;
+    padding: 8px 15px;    
+    margin-top: 5px;
+    margin-bottom: 5px;
+    display: inline-block;
+    align-items: flex-start;
+    background: linear-gradient(to bottom, gray 0%, gray 100%);
+}
+
+
