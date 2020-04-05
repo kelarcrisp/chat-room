@@ -12,6 +12,7 @@ const InputArea = (props) => {
     const handleChange = (e) => {
         e.preventDefault();
         setMessage(e.target.value)
+
     }
     return (
         <div className={classes.ContactContainer}>

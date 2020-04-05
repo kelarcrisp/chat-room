@@ -1,5 +1,5 @@
 .FormInfoDisplayContainer{
-    border: 2px solid yellow;
+    /* border: 2px solid yellow; */
     height: 70vh;
     margin: auto;
     box-sizing: border-box;
@@ -7,6 +7,8 @@
     display: flex;
     flex-direction: column;
     background-color: white;
+    overFlow: scroll;
+
 }
 
 .TextConvo{

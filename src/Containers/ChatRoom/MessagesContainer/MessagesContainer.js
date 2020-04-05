@@ -11,7 +11,6 @@ const MessagesContainer = () => {
         let holder = [];
         holder.push(...messages, message)
         setMessages(holder)
-        console.log(messages)
     }
 
     return (
