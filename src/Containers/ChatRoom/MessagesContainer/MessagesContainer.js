@@ -3,50 +3,67 @@ import classes from './MessagesContainer.module.css';
 import InputArea from './InputArea/InputArea';
 import FormInfoDisplay from './FormInfoDisplay/FormInfoDisplay';
 import firebase from 'firebase/app';
+import io from "socket.io-client";
 const MessagesContainer = () => {
 
+    const [users, setUsers] = useState([]);
+    const [message, setMessage] = useState("");
+    const [messages, setMessages] = useState([]);
+    const [firebaseUser, setFirebaseUser] = useState('');
 
-    const [messages, setMessages] = useState([])
-    const [user, setUser] = useState('')
-    let connection = new WebSocket('ws://localhost:9090/')
-
-
+    const socket = io("http://localhost:3001", {
+        transports: ["websocket", "polling"]
+    });
     const handleSubmit = (e, message) => {
         e.preventDefault();
-        console.log(message, 'message')
-        console.log(user, 'user')
-        const data = {
-            username: user.myUser || 'kelar',
-            message: message
-        }
-        if (connection.readyState === 1) {
-            connection.send(JSON.stringify(data))
-        }
+        console.log(messages, 'messages')
+        socket.emit("send", message);
+        setMessage("");
     }
 
-
     useEffect(() => {
-        connection.onmessage = (message) => {
-            const dataFromServer = JSON.parse(message.data)
-            console.log(dataFromServer, 'DATA FROM SERVER')
-            let holder = [...messages, dataFromServer]
-            setMessages(holder)
-            console.log(messages, 'messages')
-        }
-    }, [handleSubmit])
+
+        socket.on("connect", () => {
+            socket.emit("username", firebaseUser);
+        });
+
+        socket.on("users", users => {
+            setUsers(users);
+        });
+
+        socket.on("message", message => {
+            setMessages(messages => [...messages, message]);
+        });
+
+        socket.on("connected", user => {
+            setUsers(users => [...users, user]);
+        });
+
+        socket.on("disconnected", id => {
+            setUsers(users => {
+                return users.filter(user => user.id !== id);
+            });
+        });
+    }, []);
 
 
     useEffect(() => {
         firebase.auth().onAuthStateChanged((user) => {
             console.log(user.displayName, 'user IN MESSAGEcONTAINER')
-            setUser({
+            setFirebaseUser({
                 myUser: user.displayName
             })
         });
     }, [])
+
     return (
         <div className={classes.MessagesContainer}>
-            <FormInfoDisplay messagesToDisplay={messages} />
+
+            <FormInfoDisplay messagesToDisplay={messages}
+                firebaseUser={firebaseUser.myUser}
+                serverUsers={users}
+
+            />
             <div className={classes.InputArea}> <InputArea handleSubmit={handleSubmit} /></div>
 
         </div>

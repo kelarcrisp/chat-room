@@ -12,7 +12,6 @@ const FormInfoDisplay = (props) => {
 
     useEffect(scrollToBottom, [props.messagesToDisplay]);
 
-
     return (
         <div id='formScroll' className={classes.FormInfoDisplayContainer}>
             <h2 style={{ textAlign: 'center' }}>The greatest chat</h2>
@@ -21,16 +20,13 @@ const FormInfoDisplay = (props) => {
                     {props.messagesToDisplay.map((message, index) => {
                         return (
                             <ul key={Math.random()}>
-                                <li className={classes.MyUser}>{message.username.myUser}</li>
-                                <li className={classes.MyText}>{message.message}</li>
+                                <li className={props.serverUsers.includes(props.firebaseUser) ? classes.TheirText : classes.MyText}>{props.firebaseUser}</li>
+                                <li className={message.username === props.user ? classes.MyText : classes.TheirText}>{message.text}</li>
                             </ul>
                         )
                     })}
                     <div ref={messagesEndRef} />
                 </div>
-                <div className={classes.TheirText}>
-                    their text
-            </div>
             </div>
 
         </div>

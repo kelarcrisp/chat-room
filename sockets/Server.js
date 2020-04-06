@@ -1,48 +1,30 @@
+const server = require("http").createServer();
+const io = require("socket.io")(server, {
+    transports: ["websocket", "polling"]
+});
+const users = {};
+io.on("connection", client => {
+    client.on("username", username => {
+        const user = {
+            name: username,
+            id: client.id
+        };
+        users[client.id] = user;
+        io.emit("connected", user);
+        io.emit("users", Object.values(users));
+    });
 
-const WebSocketServer = require('ws').Server
-const wss = new WebSocketServer({ port: 9090 })
+    client.on("send", message => {
+        io.emit("message", {
+            text: message,
+            user: users[client.id]
+        });
+    });
 
-const clients = [];
-wss.on('connection', (connection) => {
-    clients.push(connection)
-
-    connection.on('message', (message) => {
-        const data = JSON.parse(message)
-        console.log(data)
-        connection.send(JSON.stringify(data));
-
-        // clients.forEach((client) => {
-        //     console.log(JSON.stringify(data))
-        //     client.send(JSON.stringify(data))
-        // })
-    })
-})
-
-
-
-
-
-// const WebSocketServer = require('ws').Server
-
-// const wss = new WebSocketServer({ port: 9090 })
-
-
-// const clients = [];
-// let holder = [];
-// wss.on('connection', (connection) => {
-//     clients.push(connection)
-//     // console.log(connection, 'connection ')
-//     connection.on('message', (message) => {
-//         let data = JSON.parse(message)
-//         holder.push({
-//             myUser: data.username.myUser,
-//             message: data.message
-//         })
-//         console.log(holder, 'holder')
-//         // clients.forEach((client) => {
-//         //     client.send(JSON.stringify(data))
-//         // })
-//     })
-//     let dataToSend = JSON.stringify(holder.slice(-1))
-//     connection.send(dataToSend)
-// })
+    client.on("disconnect", () => {
+        const username = users[client.id];
+        delete users[client.id];
+        io.emit("disconnected", client.id);
+    });
+});
+server.listen(3001);
