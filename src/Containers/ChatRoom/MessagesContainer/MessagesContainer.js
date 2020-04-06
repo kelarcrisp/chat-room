@@ -11,29 +11,29 @@ const MessagesContainer = () => {
     let connection = new WebSocket('ws://localhost:9090/')
 
 
+    const handleSubmit = (e, message) => {
+        e.preventDefault();
+        console.log(message, 'message')
+        console.log(user, 'user')
+        const data = {
+            username: user.myUser || 'kelar',
+            message: message
+        }
+        if (connection.readyState === 1) {
+            connection.send(JSON.stringify(data))
+        }
+    }
+
 
     useEffect(() => {
         connection.onmessage = (message) => {
             const dataFromServer = JSON.parse(message.data)
-            const holder = [...messages, dataFromServer];
+            console.log(dataFromServer, 'DATA FROM SERVER')
+            let holder = [...messages, dataFromServer]
             setMessages(holder)
-            console.log(messages, 'new state with messags from serve')
+            console.log(messages, 'messages')
         }
-    }, [connection.onmessage, messages])
-
-    const handleSubmit = (e, message) => {
-        e.preventDefault();
-        console.log(message, 'message')
-        // let holder = [];
-        // holder.push(...messages, message)
-        // setMessages(holder)
-        const data = {
-            username: user,
-            message: message
-        }
-        connection.send(JSON.stringify(data))
-    }
-
+    }, [handleSubmit])
 
 
     useEffect(() => {
