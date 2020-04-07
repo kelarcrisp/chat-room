@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import ExternalSignIn from './Components/HomePage/ExternalSignIn';
+import ExternalSignIn from './Components/HomePage/ExternalSignIn/ExternalSignIn';
 import {
   BrowserRouter,
   Switch,

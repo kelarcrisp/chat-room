@@ -49,4 +49,20 @@
     background: linear-gradient(to bottom, gray 0%, gray 100%);
 }
 
+.MyLabel{
+    margin-left: 45%;
+    background-attachment: fixed;
+    position: relative; 
+    border-radius: 20px;
+    padding: 8px 15px;  
+    color: gray;
+}
+.TheirLabel{
+     margin-right: 45%;
+    padding: 8px 15px;    
+    display: inline-block;
+    align-items: flex-start;
+    color: gray;
+}
+
 

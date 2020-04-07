@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import firebase from 'firebase';
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
-import { Redirect } from 'react-router-dom'
+import classes from './ExternalSignIn.module.css';
 class ExternalSignIn extends Component {
 
     state = {
@@ -30,7 +30,7 @@ class ExternalSignIn extends Component {
             this.setState({
                 isSignedIn: !!user
             })
-            const RedirectURI = 'http://localhost:3000/Chat-room'
+            const RedirectURI = 'https://chatroom-9dfd4.web.app/Chat-room'
             if (this.state.isSignedIn) {
                 window.location = RedirectURI
             }
@@ -40,11 +40,18 @@ class ExternalSignIn extends Component {
 
     render() {
         return (
-            <div>
-                <StyledFirebaseAuth
-                    uiConfig={this.uiConfig}
-                    firebaseAuth={firebase.auth()}
-                />
+            <div className={classes.SignInContainer}>
+                <div className={classes.ButtonsContainer}>
+                    <div className={classes.SignInButtons}>
+                        <p style={{ color: 'white', marginBottom: '50px' }}> Sign in to join the greatest chat on earth!</p>
+                        <StyledFirebaseAuth
+                            uiConfig={this.uiConfig}
+                            firebaseAuth={firebase.auth()}
+                        />
+                    </div>
+
+                </div>
+
             </div>
         )
     }

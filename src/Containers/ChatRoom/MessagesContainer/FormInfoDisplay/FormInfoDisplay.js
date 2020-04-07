@@ -20,7 +20,7 @@ const FormInfoDisplay = (props) => {
                     {props.messagesToDisplay.map((message, index) => {
                         return (
                             <ul key={Math.random()}>
-                                <div className={props.serverUsers[index].user === props.firebaseUser ? classes.MyText : classes.TheirText}>{props.serverUsers[index].user}</div>
+                                <div className={props.serverUsers[index].user === props.firebaseUser ? classes.MyLabel : classes.TheirLabel}>{props.serverUsers[index].user}</div>
                                 <li className={props.serverUsers[index].user === props.firebaseUser ? classes.MyText : classes.TheirText}>{message.text}</li>
                             </ul>
                         )

@@ -33,7 +33,7 @@ class NavBar extends Component {
                     {this.state.myUser} is signed in
                 </div>
                 <div className={classes.NavItemsRight}>
-                    <NavLink
+                    {/* <NavLink
                         to="/Profile"
                         activeStyle={{
                             fontWeight: "bold",
@@ -41,7 +41,7 @@ class NavBar extends Component {
                         }}
                     >
                         profile page
-                    </NavLink>
+                    </NavLink> */}
                     <button
                         onClick={this.signOut}
                         style={{ margin: '0 10px' }}> Sign out </button>
