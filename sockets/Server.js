@@ -9,16 +9,18 @@ io.on("connection", client => {
             name: username,
             id: client.id
         };
+        console.log(user, 'user on server')
         users[client.id] = user;
         io.emit("connected", user);
         io.emit("users", Object.values(users));
     });
 
-    client.on("send", message => {
+    client.on("send", (message, user) => {
         io.emit("message", {
             text: message,
-            user: users[client.id]
+            user: user
         });
+        console.log(message, user)
     });
 
     client.on("disconnect", () => {

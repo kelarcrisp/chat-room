@@ -16,27 +16,36 @@ const MessagesContainer = () => {
     });
     const handleSubmit = (e, message) => {
         e.preventDefault();
-        console.log(messages, 'messages')
-        socket.emit("send", message);
+        socket.emit("send", message, firebaseUser);
         setMessage("");
     }
 
-    useEffect(() => {
 
-        socket.on("connect", () => {
-            socket.emit("username", firebaseUser);
+    useEffect(() => {
+        firebase.auth().onAuthStateChanged((user) => {
+            console.log('' + user.displayName, 'user IN MESSAGEcONTAINER')
+            const holder = user.displayName
+            setFirebaseUser(holder)
         });
+    }, [])
+
+
+
+    useEffect(() => {
 
         socket.on("users", users => {
             setUsers(users);
+            console.log(users, 'users array')
         });
 
-        socket.on("message", message => {
+        socket.on("message", (message) => {
             setMessages(messages => [...messages, message]);
+
         });
 
         socket.on("connected", user => {
             setUsers(users => [...users, user]);
+            console.log(user, 'user in connected')
         });
 
         socket.on("disconnected", id => {
@@ -47,22 +56,12 @@ const MessagesContainer = () => {
     }, []);
 
 
-    useEffect(() => {
-        firebase.auth().onAuthStateChanged((user) => {
-            console.log(user.displayName, 'user IN MESSAGEcONTAINER')
-            setFirebaseUser({
-                myUser: user.displayName
-            })
-        });
-    }, [])
-
+    console.log(messages, 'users from server')
     return (
         <div className={classes.MessagesContainer}>
-
             <FormInfoDisplay messagesToDisplay={messages}
-                firebaseUser={firebaseUser.myUser}
-                serverUsers={users}
-
+                firebaseUser={firebaseUser}
+                serverUsers={messages}
             />
             <div className={classes.InputArea}> <InputArea handleSubmit={handleSubmit} /></div>
 
