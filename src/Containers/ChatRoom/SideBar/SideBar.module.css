@@ -6,14 +6,21 @@
     height: 90vh;
     width: 150px;
     border-top: 2px solid black;
-box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 .Users{
     /* border: 2px solid yellow; */
-    margin: 10px 15px;
-    height: 200px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between
+    text-align: center;
+    padding: 0px;
+}
+
+.User{
+    font-family: 'Merriweather', serif;
+    list-style: none;
+    box-sizing: border-box;
+    padding: 5px 0px;
+    margin: none;
 }

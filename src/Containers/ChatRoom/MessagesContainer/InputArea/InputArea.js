@@ -5,9 +5,7 @@ import classes from './InputArea.module.css';
 import SendIcon from '@material-ui/icons/Send';
 
 const InputArea = (props) => {
-
     const [message, setMessage] = useState('');
-
 
     const handleChange = (e) => {
         e.preventDefault();
@@ -29,6 +27,7 @@ const InputArea = (props) => {
                     color="primary"
                     startIcon={<SendIcon></SendIcon>}
                     style={{ height: '55px' }}
+                    disabled={!message}
                 >
                     Send!
                     </Button>

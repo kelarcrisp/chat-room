@@ -1,21 +1,34 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import NavBar from '../../Shared/NavBar/Navbar';
 import SideBar from '../ChatRoom/SideBar/SideBar';
 import MessagesContainer from './MessagesContainer/MessagesContainer';
 import classes from './ChatRoom.module.css';
-class ChatRoom extends Component {
-    render() {
-        return (
-            <div className={classes.ChatRoomContainer}>
-                <div className={classes.NavBarContainer}><NavBar /></div>
-                <div className={classes.SideAndMessages}>
-                    <SideBar />
-                    <MessagesContainer />
-                </div>
+const ChatRoom = () => {
 
-            </div>
-        );
+    const [myUsers, setMyUsers] = useState(['john'])
+
+
+    const getUsers = (users) => {
+        setMyUsers((userss) => [...userss, users])
+        console.log('received new users')
     }
+
+    console.log(myUsers, 'my users from chat roon!!!!!EDAFSDDASDASd')
+    let setOfUsers;
+    if (myUsers) {
+        setOfUsers = [...new Set(myUsers)];
+
+    }
+    return (
+        <div className={classes.ChatRoomContainer}>
+            <div className={classes.NavBarContainer}><NavBar /></div>
+            <div className={classes.SideAndMessages}>
+                <SideBar users={setOfUsers} />
+                <MessagesContainer getUsers={getUsers} />
+            </div>
+
+        </div>
+    );
 }
 
 export default ChatRoom;

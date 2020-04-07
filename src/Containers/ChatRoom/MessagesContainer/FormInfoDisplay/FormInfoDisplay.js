@@ -11,7 +11,7 @@ const FormInfoDisplay = (props) => {
     }
 
     useEffect(scrollToBottom, [props.messagesToDisplay]);
-    console.log(props)
+
     return (
         <div id='formScroll' className={classes.FormInfoDisplayContainer}>
             <h2 style={{ textAlign: 'center' }}>The greatest chat</h2>
