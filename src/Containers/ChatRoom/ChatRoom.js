@@ -10,10 +10,8 @@ const ChatRoom = () => {
 
     const getUsers = (users) => {
         setMyUsers((userss) => [...userss, users])
-        console.log('received new users')
     }
 
-    console.log(myUsers, 'my users from chat roon!!!!!EDAFSDDASDASd')
     let setOfUsers;
     if (myUsers) {
         setOfUsers = [...new Set(myUsers)];

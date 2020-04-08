@@ -26,7 +26,6 @@ class ExternalSignIn extends Component {
 
     componentDidMount() {
         firebase.auth().onAuthStateChanged(user => {
-            console.log(user, 'user')
             this.setState({
                 isSignedIn: !!user
             })

@@ -11,13 +11,11 @@ class NavBar extends Component {
         firebase.auth().signOut().then(userSignedOut => {
             console.log(userSignedOut)
         })
-        console.log('signed out')
         window.location = 'http://localhost:3000'
     }
 
     componentDidMount() {
         firebase.auth().onAuthStateChanged((user) => {
-            console.log(user.displayName, 'user')
             this.setState({
                 myUser: user.displayName
             })
