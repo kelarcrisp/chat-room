@@ -64,5 +64,9 @@
     align-items: flex-start;
     color: gray;
 }
-
+h2 {
+      font-family: 'Merriweather', serif;
+      font-weight: 500;
+      text-align: left;
+}
 

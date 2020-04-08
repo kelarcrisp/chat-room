@@ -2,10 +2,15 @@
     width: 100%;
     height: 15%;
     display: flex;
-
+    background-color: white;
 }
 
 
 .InputArea{
     width: 150px;
+     background-color: white;
+}
+
+.TextField{
+     background-color: white;
 }

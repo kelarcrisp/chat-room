@@ -1,6 +1,6 @@
 .NavBarContainer{
     height: 80px;
-    background-color: gray;
+     background-color:#f5f7fa;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -9,7 +9,7 @@
 
 .NavItemsLeft{
     margin: 0 20px;
-    color: white;
+    color: black;
 }
 
 .NavItemsRight{

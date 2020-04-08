@@ -30,7 +30,7 @@ class ExternalSignIn extends Component {
             this.setState({
                 isSignedIn: !!user
             })
-            const RedirectURI = 'https://chatroom-9dfd4.web.app/Chat-room'
+            const RedirectURI = 'http://localhost:3000/Chat-room'
             if (this.state.isSignedIn) {
                 window.location = RedirectURI
             }

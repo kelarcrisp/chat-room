@@ -1,6 +1,6 @@
 .MessagesContainer{
     display: flex;
-    background-color: gray;
+    background: linear-gradient(#f5f7fa,  #c3cfe2);
     width: 100%;
     height: 90vh;
     /* border: 2px solid yellow; */

@@ -1,7 +1,7 @@
 .NavBarContainer{
     display: flex;
     flex-direction: column;
-    background-color: gray;
+     background: linear-gradient(#f5f7fa,  #c3cfe2);
     /* border-right: 2px solid black; */
     height: 90vh;
     width: 150px;
