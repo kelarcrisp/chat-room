@@ -1,3 +1,6 @@
+*{
+     font-family: helvetica;
+}
 .FormInfoDisplayContainer{
     /* border: 2px solid yellow; */
     height: 70vh;
@@ -21,7 +24,7 @@
     list-style-type: none;   
     color: white;
     margin-left: 45%;
-    background: linear-gradient(to bottom, #00D0EA 0%, #0085D1 100%);
+  background: rgb(0, 120, 254);
     background-attachment: fixed;
     position: relative; 
     border-radius: 20px;
@@ -36,6 +39,7 @@
     background-attachment: fixed;
     position: relative; 
     border-radius: 20px;
+     background: #EEE;
 }
 
 .TheirText{
@@ -46,7 +50,7 @@
     margin-bottom: 5px;
     display: inline-block;
     align-items: flex-start;
-    background: linear-gradient(to bottom, gray 0%, gray 100%);
+    background: #EEE;
 }
 
 .MyLabel{
@@ -55,14 +59,13 @@
     position: relative; 
     border-radius: 20px;
     padding: 8px 15px;  
-    color: gray;
 }
 .TheirLabel{
      margin-right: 45%;
     padding: 8px 15px;    
     display: inline-block;
     align-items: flex-start;
-    color: gray;
+color:black;
 }
 h2 {
       font-family: 'Merriweather', serif;
