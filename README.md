@@ -1,3 +1,10 @@
+````
+git clone https://github.com/epicoding95/chat-room
+cd in this project
+cd into the sockets folder
+run npm install and then npm start
+ ````
+
 ![Screen Shot 2020-04-03 at 1 03 49 PM](https://user-images.githubusercontent.com/49597486/78400566-d31d6d80-75ab-11ea-8fdc-2cb471603a47.png)
 
 
