@@ -1,4 +1,9 @@
-const server = require("http").createServer();
+const express = require('express')
+const app = express()
+const server = require('http').Server(app)
+
+app.use(express.static(__dirname + '../build'))
+
 const io = require("socket.io")(server, {
     transports: ["websocket", "polling"]
 });
